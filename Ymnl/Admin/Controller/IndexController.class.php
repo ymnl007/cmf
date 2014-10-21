@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace Admin\Controller;
 use Logic\CommonController;
 class IndexController extends CommonController {
     public function index(){
