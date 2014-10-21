@@ -1,12 +1,14 @@
 <?php
 return array(
+	'SHOW_PAGE_TRACE' => true,
+
 	'TMPL_L_DELIM'          =>  '<{ymnl:',            // 模板引擎普通标签开始标记
 	'TMPL_R_DELIM'          =>  '}>',
 	'VIEW_PATH'=> './Theme/', // 模板路径
 	'TMPL_FILE_DEPR'=>'.',
 
 	'AUTOLOAD_NAMESPACE' => array(
-		'Logic' => COMMON_PATH.'Logic',
+		'Logic' => COMMON_PATH.'Logic',  //自动加载
 		),
 
 	'DEFAULT_THEME'  => 'default', //默认模板主题
