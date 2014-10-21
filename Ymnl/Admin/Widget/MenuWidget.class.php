@@ -9,4 +9,7 @@ class MenuWidget extends Controller{
 		
 		return $menu;
 	}
+	public function add(){
+
+	}
 }
