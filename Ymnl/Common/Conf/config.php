@@ -2,20 +2,20 @@
 return array(
 	'SHOW_PAGE_TRACE' => true,
 
-	'TMPL_L_DELIM'          =>  '<{ymnl:',            // 模板引擎普通标签开始标记
+	'TMPL_L_DELIM'          =>  '<{ymnl',            // 模板引擎普通标签开始标记
 	'TMPL_R_DELIM'          =>  '}>',
-	'VIEW_PATH'=> './Theme/', // 模板路径
+// 	'VIEW_PATH'=> './Theme/', // 模板路径
 	'TMPL_FILE_DEPR'=>'.',
-
+	'MULTI_MODULE'          =>  true,
 	'AUTOLOAD_NAMESPACE' => array(
 		'Logic' => COMMON_PATH.'Logic',  //自动加载
 		),
-
+	'TMPL_LOAD_DEFAULTTHEME'=>true,
 	'DEFAULT_THEME'  => 'default', //默认模板主题
  	'TMPL_DETECT_THEME' => true, //开启模板主题
  	'TMPL_CACHE_ON'         =>  true,        // 是否开启模板编译缓存,设为false则每次都会重新编译
  	'URL_MODULE_MAP' => array(
- 			'manage' => 'Admin',
+//  			'manage' => 'Admin',
  		),
 
  	'TMPL_ACTION_ERROR'     =>  './Theme/Tpl/dispatch_jump.tpl', // 默认错误跳转对应的模板文件
@@ -41,16 +41,4 @@ return array(
     'RBAC_USER_TABLE'           =>  'think_role_user',
     'RBAC_ACCESS_TABLE'         =>  'think_access',
     'RBAC_NODE_TABLE'           =>  'think_node',
-
-    // USER_AUTH_ON 是否需要认证
-// USER_AUTH_TYPE 认证类型
-// USER_AUTH_KEY 认证识别号
-// REQUIRE_AUTH_MODULE  需要认证模块
-// NOT_AUTH_MODULE 无需认证模块
-// USER_AUTH_GATEWAY 认证网关
-// RBAC_DB_DSN  数据库连接DSN
-// RBAC_ROLE_TABLE 角色表名称
-// RBAC_USER_TABLE 用户表名称
-// RBAC_ACCESS_TABLE 权限表名称
-// RBAC_NODE_TABLE 节点表名称
 );

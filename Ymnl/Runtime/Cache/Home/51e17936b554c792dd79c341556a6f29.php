@@ -1,1 +1,1 @@
-<?php if (!defined('THINK_PATH')) exit();?>sss
+<?php if (!defined('THINK_PATH')) exit();?><{ymnl::W('Menu/index')}>

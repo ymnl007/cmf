@@ -4,6 +4,7 @@ namespace Logic;
 use Think\Controller;
 class CommonController extends Controller{
 	public function _initialize(){
+		//判断权限
 		$this->_rbac();
 	}
 	// 分页
