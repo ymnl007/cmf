@@ -2,7 +2,7 @@
 return array(
 	'SHOW_PAGE_TRACE' => true,
 
-	'TMPL_L_DELIM'          =>  '<{ymnl:',            // 模板引擎普通标签开始标记
+	'TMPL_L_DELIM'          =>  '<{ymnl',            // 模板引擎普通标签开始标记
 	'TMPL_R_DELIM'          =>  '}>',
 	'VIEW_PATH'=> './Theme/', // 模板路径
 	'TMPL_FILE_DEPR'=>'.',
@@ -37,10 +37,18 @@ return array(
     'GUEST_AUTH_ON'             =>  false,    // 是否开启游客授权访问
     'GUEST_AUTH_ID'             =>  0,        // 游客的用户ID
     'DB_LIKE_FIELDS'            =>  'title|remark',
-    'RBAC_ROLE_TABLE'           =>  'think_role',
-    'RBAC_USER_TABLE'           =>  'think_role_user',
-    'RBAC_ACCESS_TABLE'         =>  'think_access',
-    'RBAC_NODE_TABLE'           =>  'think_node',
+    'RBAC_ROLE_TABLE'           =>  'ymnl_role',
+    'RBAC_USER_TABLE'           =>  'ymnl_role_user',
+    'RBAC_ACCESS_TABLE'         =>  'ymnl_access',
+    'RBAC_NODE_TABLE'           =>  'ymnl_node',
+    /* 数据库配置 */
+    'DB_TYPE'   => 'mysql', // 数据库类型
+    'DB_HOST'   => '127.0.0.1', // 服务器地址
+    'DB_NAME'   => 'cmf', // 数据库名
+    'DB_USER'   => 'root', // 用户名
+    'DB_PWD'    => '', // 密码
+    'DB_PORT'   => '3306', // 端口
+    'DB_PREFIX' => 'ymnl_', // 数据库表前缀
 
     // USER_AUTH_ON 是否需要认证
 // USER_AUTH_TYPE 认证类型
