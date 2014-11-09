@@ -14,6 +14,9 @@ class CommonController extends Controller{
 	public function _isLogin(){
 
 	}
+	public function login(){
+
+	}
 	// rbac权限
 	public function _rbac(){
 		//判断是否开启权限验证，模块是否在非验证模块中
@@ -21,7 +24,7 @@ class CommonController extends Controller{
 			import('Org.Util.Rbac');
 			//权限认证的过滤器
 			if(!Rbac::AccessDecision()){
-
+				
 			}
 		}
 	}
