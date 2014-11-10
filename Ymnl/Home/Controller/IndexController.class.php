@@ -10,6 +10,28 @@ class IndexController extends CommonController {
 
     }
     public function test(){
+    	$arr[] = array(
+    		'id'=>1,'title'=>'xxxx',
+    		);
+    	$arr[] = array(
+    		'id'=>2,'title'=>'dd',
+    		);
+    	$arr[] = array(
+    		'id'=>3,'title'=>'ff',
+    		);
+    	echo json_encode($arr);
     	$this->display();
+    }
+    public function getJson(){
+    	$arr[] = array(
+    		'id'=>1,'title'=>'xxxx',
+    		);
+    	$arr[] = array(
+    		'id'=>2,'title'=>'dd',
+    		);
+    	$arr[] = array(
+    		'id'=>3,'title'=>'ff',
+    		);
+    	echo json_encode($arr);
     }
 }

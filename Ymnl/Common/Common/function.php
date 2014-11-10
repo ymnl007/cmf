@@ -206,6 +206,151 @@ public function autoCharset($string, $from='gbk', $to='utf-8') {
     }
 }
 /**
+ * 系统加密方法
+ * @param string $data 要加密的字符串
+ * @param string $key  加密密钥
+ * @param int $expire  过期时间 单位 秒
+ * @return string
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function think_encrypt($data, $key = '', $expire = 0) {
+    $key  = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
+    $data = base64_encode($data);
+    $x    = 0;
+    $len  = strlen($data);
+    $l    = strlen($key);
+    $char = '';
+
+    for ($i = 0; $i < $len; $i++) {
+        if ($x == $l) $x = 0;
+        $char .= substr($key, $x, 1);
+        $x++;
+    }
+
+    $str = sprintf('%010d', $expire ? $expire + time():0);
+
+    for ($i = 0; $i < $len; $i++) {
+        $str .= chr(ord(substr($data, $i, 1)) + (ord(substr($char, $i, 1)))%256);
+    }
+    return str_replace(array('+','/','='),array('-','_',''),base64_encode($str));
+}
+/**
+ * 系统解密方法
+ * @param  string $data 要解密的字符串 （必须是think_encrypt方法加密的字符串）
+ * @param  string $key  加密密钥
+ * @return string
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function think_decrypt($data, $key = ''){
+    $key    = md5(empty($key) ? C('DATA_AUTH_KEY') : $key);
+    $data   = str_replace(array('-','_'),array('+','/'),$data);
+    $mod4   = strlen($data) % 4;
+    if ($mod4) {
+       $data .= substr('====', $mod4);
+    }
+    $data   = base64_decode($data);
+    $expire = substr($data,0,10);
+    $data   = substr($data,10);
+
+    if($expire > 0 && $expire < time()) {
+        return '';
+    }
+    $x      = 0;
+    $len    = strlen($data);
+    $l      = strlen($key);
+    $char   = $str = '';
+
+    for ($i = 0; $i < $len; $i++) {
+        if ($x == $l) $x = 0;
+        $char .= substr($key, $x, 1);
+        $x++;
+    }
+
+    for ($i = 0; $i < $len; $i++) {
+        if (ord(substr($data, $i, 1))<ord(substr($char, $i, 1))) {
+            $str .= chr((ord(substr($data, $i, 1)) + 256) - ord(substr($char, $i, 1)));
+        }else{
+            $str .= chr(ord(substr($data, $i, 1)) - ord(substr($char, $i, 1)));
+        }
+    }
+    return base64_decode($str);
+}
+/**
+ * 格式化字节大小
+ * @param  number $size      字节数
+ * @param  string $delimiter 数字和单位分隔符
+ * @return string            格式化后的带单位的大小
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function format_bytes($size, $delimiter = '') {
+    $units = array('B', 'KB', 'MB', 'GB', 'TB', 'PB');
+    for ($i = 0; $size >= 1024 && $i < 5; $i++) $size /= 1024;
+    return round($size, 2) . $delimiter . $units[$i];
+}
+/**
+ * 处理插件钩子
+ * @param string $hook   钩子名称
+ * @param mixed $params 传入参数
+ * @return void
+ */
+function hook($hook,$params=array()){
+    \Think\Hook::listen($hook,$params);
+}
+
+/**
+ * 获取插件类的类名
+ * @param strng $name 插件名
+ */
+function get_addon_class($name){
+    $class = "Addons\\{$name}\\{$name}Addon";
+    return $class;
+}
+
+/**
+ * 获取插件类的配置文件数组
+ * @param string $name 插件名
+ */
+function get_addon_config($name){
+    $class = get_addon_class($name);
+    if(class_exists($class)) {
+        $addon = new $class();
+        return $addon->getConfig();
+    }else {
+        return array();
+    }
+}
+
+/**
+ * 插件显示内容里生成访问插件的url
+ * @param string $url url
+ * @param array $param 参数
+ * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+ */
+function addons_url($url, $param = array()){
+    $url        = parse_url($url);
+    $case       = C('URL_CASE_INSENSITIVE');
+    $addons     = $case ? parse_name($url['scheme']) : $url['scheme'];
+    $controller = $case ? parse_name($url['host']) : $url['host'];
+    $action     = trim($case ? strtolower($url['path']) : $url['path'], '/');
+
+    /* 解析URL带的参数 */
+    if(isset($url['query'])){
+        parse_str($url['query'], $query);
+        $param = array_merge($query, $param);
+    }
+
+    /* 基础参数 */
+    $params = array(
+        '_addons'     => $addons,
+        '_controller' => $controller,
+        '_action'     => $action,
+    );
+    $params = array_merge($params, $param); //添加额外参数
+
+    return U('Addons/execute', $params);
+}
+
+/**
  * 下载文件
  * 可以指定下载显示的文件名，并自动发送相应的Header信息
  * 如果指定了content参数，则下载该参数的内容
