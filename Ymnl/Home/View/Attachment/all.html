@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="widget">
+			<div class="widget-head">
+			  <div class="pull-left" height="80">
+			  管理attachment
+			  </div>
+			  <div class="widget-icons pull-right">
+				<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+				<a href="#" class="wclose"><i class="icon-remove"></i></a>
+			  </div>  
+			  <div class="clearfix"></div>
+			</div>  
+			<div class="widget-content" >
+			<div class="padd">
+				<div class="form quick-post">
+							  <div class="form-horizontal">                        
+								  <div class="form-group">
+									<table class="table table-striped table-bordered table-hover">
+<thead>
+<tr>
+<th><center>Id</center></th>
+<th><center>sendId</center></th>
+<th><center>worknum</center></th>
+<th><center>filename</center></th>
+<th><center>filepath</center></th>
+<th><center>uid</center></th>
+<td>操作</td>
+</tr>
+</thead>
+<volist name="attachmentList" id="vo">
+<tr>
+<td>{$vo.Id}</td>
+<td>{$vo.sendId}</td>
+<td>{$vo.worknum}</td>
+<td>{$vo.filename}</td>
+<td>{$vo.filepath}</td>
+<td>{$vo.uid}</td>
+<td><a href="{:U('Attachment/edit')}?id={$vo.id}">编辑</a> | <a href="{:U('Attachment/delete')}?id={$vo.id}" onclick='return confirm("确定删除吗？")'>删除</a></td>
+<tr>
+</volist>
+</table>
+
+								  </div>              
+							  </div>
+				</div><!--end  paddad-->
+			</div>
+		</div>	
+		</div>	
+	</div>
+</div>

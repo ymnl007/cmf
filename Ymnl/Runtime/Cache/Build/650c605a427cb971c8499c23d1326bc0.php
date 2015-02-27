@@ -1,0 +1,1 @@
+<?php if (!defined('THINK_PATH')) exit();?><p>此项目由ThinkphpHelper生成，您可以根据需要进行修改</p>

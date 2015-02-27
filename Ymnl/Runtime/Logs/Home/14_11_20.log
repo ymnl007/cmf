@@ -1,0 +1,18 @@
+[ 2014-11-20T17:53:32+08:00 ] 127.0.0.1 /cmf/index.php/
+ERR: 模板不存在:./Ymnl/Home/View/default/Index.index.html
+
+[ 2014-11-20T17:54:06+08:00 ] 127.0.0.1 /cmf/index.php/
+ERR: 模板不存在:./Ymnl/Home/View/default/./Theme/Tpl/dispatch_jump.tpl.html
+
+[ 2014-11-20T17:56:39+08:00 ] 127.0.0.1 /cmf/index.php/Home/Index/index.html
+ERR: 模板不存在:./Theme/default/./Theme/Tpl/dispatch_jump1.tpl.html
+
+[ 2014-11-20T17:57:18+08:00 ] 127.0.0.1 /cmf/index.php/Home/Index/index.html
+ERR: 模板不存在:./Ymnl/Home/View/default/./Theme/Tpl/dispatch_jump1.tpl.html
+
+[ 2014-11-20T18:00:09+08:00 ] 127.0.0.1 /cmf/index.php/Home/Index/index.html
+ERR: 模板不存在:./Ymnl/Home/View/default/./Theme/Tpl/dispatch_jump1.tpl.html
+
+[ 2014-11-20T18:00:20+08:00 ] 127.0.0.1 /cmf/index.php/Home/Index/index.html
+ERR: 模板不存在:./Theme/default/./Theme/Tpl/dispatch_jump1.tpl.html
+

@@ -1,0 +1,3 @@
+[ 2014-11-21T09:01:49+08:00 ] 127.0.0.1 /cmf/index.php/home/Index/test
+ERR: 模板不存在:./Theme/default/Index.test.html
+

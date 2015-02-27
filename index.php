@@ -21,6 +21,6 @@ define('APP_DEBUG',True);
 define('APP_PATH','./Ymnl/');
 
 // 引入ThinkPHP入口文件
-require APP_PATH.'Core/ThinkPHP.php';
+require APP_PATH.'_Core/ThinkPHP.php';
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单
