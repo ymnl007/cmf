@@ -1,4 +1,7 @@
 <?php
 return array(
-	'DEFAULT_THEME'  => '', //默认模板主题
+	//'配置项'=>'配置值'
+	'LAYOUT_ON'			=>	true,		//开启布局
+	'LAYOUT_NAME'		=>	'layout',	//布局名称layout
+	'TMPL_FILE_DEPR'=>'/',
 );

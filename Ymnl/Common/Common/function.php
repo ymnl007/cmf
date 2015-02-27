@@ -11,7 +11,7 @@
  * @param string $suffix 截断显示字符
  * @return string
  */
-public function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
+function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
     if(function_exists("mb_substr"))
         $slice = mb_substr($str, $start, $length, $charset);
     elseif(function_exists('iconv_substr')) {
@@ -31,7 +31,7 @@ public function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true)
  * @param string $string 字符串
  * @return Boolean
  */
-public function isUtf8($str) {
+function isUtf8($str) {
     $c=0; $b=0;
     $bits=0;
     $len=strlen($str);
@@ -65,7 +65,7 @@ public function isUtf8($str) {
  * @param string $addChars 额外字符
  * @return string
  */
-public function randString($len=6,$type='',$addChars='') {
+function randString($len=6,$type='',$addChars='') {
     $str ='';
     switch($type) {
         case 0:
@@ -110,7 +110,7 @@ public function randString($len=6,$type='',$addChars='') {
  * 0 字母 1 数字 其它 混合
  * @return string
  */
-public function buildCountRand ($number,$length=4,$mode=1) {
+function buildCountRand ($number,$length=4,$mode=1) {
     if($mode==1 && $length<strlen($number) ) {
         //不足以生成一定数量的不重复数字
         return false;
@@ -139,7 +139,7 @@ public function buildCountRand ($number,$length=4,$mode=1) {
  * @param integer $number 生成数量
  * @return string | array
  */
-public function buildFormatRand($format,$number=1) {
+function buildFormatRand($format,$number=1) {
     $str  =  array();
     $length =  strlen($format);
     for($j=0; $j<$number; $j++) {
@@ -172,12 +172,12 @@ public function buildFormatRand($format,$number=1) {
  * @param integer $max 最大值
  * @return string
  */
-public function randNumber ($min, $max) {
+function randNumber ($min, $max) {
     return sprintf("%0".strlen($max)."d", mt_rand($min,$max));
 }
 
 // 自动转换字符集 支持数组转换
-public function autoCharset($string, $from='gbk', $to='utf-8') {
+function autoCharset($string, $from='gbk', $to='utf-8') {
     $from = strtoupper($from) == 'UTF8' ? 'utf-8' : $from;
     $to = strtoupper($to) == 'UTF8' ? 'utf-8' : $to;
     if (strtoupper($from) === strtoupper($to) || empty($string) || (is_scalar($string) && !is_string($string))) {
@@ -362,7 +362,7 @@ function addons_url($url, $param = array()){
  * @param integer $expire  下载内容浏览器缓存时间
  * @return void
  */
-public function download ($filename, $showname='',$content='',$expire=180) {
+function download ($filename, $showname='',$content='',$expire=180) {
     if(is_file($filename)) {
         $length = filesize($filename);
     }elseif(is_file(UPLOAD_PATH.$filename)) {

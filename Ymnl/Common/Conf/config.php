@@ -4,7 +4,7 @@ return array(
 
 	'TMPL_L_DELIM'          =>  '<{ymnl',            // 模板引擎普通标签开始标记
 	'TMPL_R_DELIM'          =>  '}>',
-// 	'VIEW_PATH'=> './Theme/', // 模板路径
+	'VIEW_PATH'=> './Theme/', // 模板路径
 	'TMPL_FILE_DEPR'=>'.',
 	'MULTI_MODULE'          =>  true,
 	'AUTOLOAD_NAMESPACE' => array(
@@ -41,4 +41,12 @@ return array(
     'RBAC_USER_TABLE'           =>  'think_role_user',
     'RBAC_ACCESS_TABLE'         =>  'think_access',
     'RBAC_NODE_TABLE'           =>  'think_node',
+
+    'DB_TYPE' => 'mysql',
+    'DB_HOST' => 'localhost',
+    'DB_NAME' => 'testymnl',
+    'DB_USER' => 'root',
+    'DB_PWD' => '',
+    'DB_PORT' => '3306',
+    'DB_PREFIX' => 'ymnl_',
 );

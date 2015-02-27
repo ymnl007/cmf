@@ -5,7 +5,7 @@ use Think\Controller;
 class CommonController extends Controller{
 	public function _initialize(){
 		//判断权限
-		$this->_rbac();
+		// $this->_rbac();
 	}
 	// 分页
 	public function _page(){
